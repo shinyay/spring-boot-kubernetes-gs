@@ -9,6 +9,7 @@ set -g PACKAGE $GROUP_ID
 set -g DEPENDENCY webflux,actuator
 
 curl https://start.spring.io/starter.zip --create-dirs -o ./spring/spring.zip \
+        -d bootVersion=2.3.0.M4 \
 	-d type=gradle-project \
 	-d language=kotlin \
 	-d groupId=$GROUP_ID \
