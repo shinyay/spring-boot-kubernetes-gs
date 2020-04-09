@@ -7,3 +7,6 @@ management:
   health:
     probes:
       enabled: true
+server:
+  shutdown:
+    grace-period: 30s
