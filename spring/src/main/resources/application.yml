@@ -1,0 +1,9 @@
+management:
+  endpoint:
+    health:
+      group:
+        liveness:
+          include: livenessProbe
+  health:
+    probes:
+      enabled: true
