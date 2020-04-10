@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.google.shinyay"
-version = "0.0.1-SNAPSHOT"
+version = "latest"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -44,6 +44,8 @@ tasks.withType<KotlinCompile> {
 }
 
 val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
+val username= if (hasProperty("username")) findProperty("username") as String else ""
+val password = if (hasProperty("password")) findProperty("password") as String else ""
 
 jib {
 	from {
@@ -51,8 +53,8 @@ jib {
 	}
 	to {
 		image = "registry.hub.docker.com/${project_id}/spring-boot-kubernetes-gs:${version}"
-//        auth.username = $USERNAME
-//        auth.password = $PASSWORD
+//        auth.username = $username
+//        auth.password = $password
 	}
 	container {
 		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
