@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.3.0.M4"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
+	id("com.gorylenko.gradle-git-properties") version "2.0.0"
+	id("com.google.cloud.tools.jib") version "1.8.0"
 	kotlin("jvm") version "1.3.71"
 	kotlin("plugin.spring") version "1.3.71"
 }
@@ -38,5 +40,22 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
+	}
+}
+
+val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
+
+jib {
+	from {
+		image = "shinyay/adoptopenjdk11-minimum"
+	}
+	to {
+		image = "registry.hub.docker.com/${project_id}/spring-boot-kubernetes-gs:${version}"
+//        auth.username = $USERNAME
+//        auth.password = $PASSWORD
+	}
+	container {
+		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
+		useCurrentTimestamp = true
 	}
 }
