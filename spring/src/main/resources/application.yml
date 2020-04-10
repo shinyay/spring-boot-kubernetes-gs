@@ -7,6 +7,10 @@ management:
   health:
     probes:
       enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 server:
   shutdown:
     grace-period: 30s
