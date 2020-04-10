@@ -58,6 +58,7 @@ jib {
 	}
 	container {
 		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
+		creationTime = "USE_CURRENT_TIMESTAMP"
 	}
 }
 
