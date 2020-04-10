@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.google.shinyay"
-version = "latest"
+version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -60,4 +60,8 @@ jib {
 		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
 		useCurrentTimestamp = true
 	}
+}
+
+springBoot {
+	buildInfo()
 }
