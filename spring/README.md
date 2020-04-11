@@ -1,6 +1,6 @@
-# Name
+# Spring Boot Kubernetes Getting Started
 
-Overview
+Deploying Spring Boot Application on Kubernetes
 
 ## Description
 
