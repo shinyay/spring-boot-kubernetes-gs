@@ -6,6 +6,52 @@ Deploying Spring Boot Application on Kubernetes
 
 ## Demo
 
+### Actuator
+```yaml
+management:
+  endpoint:
+    health:
+      group:
+        liveness:
+          include: livenessProbe
+  health:
+    probes:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+```
+
+#### LivenessProbe and ReadinessProbe
+```
+$ curl http://localhost:8080/actuator/health|jq .
+
+{
+  "status": "UP",
+  "groups": [
+    "liveness",
+    "readiness"
+  ]
+}
+```
+
+```
+$ curl http://localhost:8080/actuator/health/liveness|jq .
+
+{
+  "status": "UP"
+}
+```
+
+```
+$ curl http://localhost:8080/actuator/health/readiness|jq .
+
+{
+  "status": "UP"
+}
+```
+
 ## Features
 
 - feature:1
