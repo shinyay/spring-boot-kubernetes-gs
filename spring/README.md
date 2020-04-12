@@ -52,7 +52,7 @@ $ curl http://localhost:8080/actuator/health/readiness|jq .
 }
 ```
 
-#### Graceful Shutdown
+### Graceful Shutdown
 Web server will no longer permit new requests and will wait for up to the grace period for active requests to complete.
 ```yaml
 server:
@@ -60,6 +60,19 @@ server:
     grace-period: 30s
 ```
 
+### Container Build
+#### Gradle Task `bootBuildImage`
+
+- `project_id` is configured at gradle.properties
+
+```
+val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
+
+tasks.getByName<BootBuildImage>("bootBuildImage") {
+	builder = "cloudfoundry/cnb:bionic"
+	imageName = "docker.io/${project_id}/${project.name}:${project.version}"
+}
+```
 ## Features
 
 - feature:1
