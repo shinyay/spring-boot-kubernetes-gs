@@ -1,6 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
+	java
 	id("org.springframework.boot") version "2.3.0.M4"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
 	id("com.gorylenko.gradle-git-properties") version "2.0.0"
@@ -41,6 +43,11 @@ tasks.withType<KotlinCompile> {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
 	}
+}
+
+tasks.getByName<BootBuildImage>("bootBuildImage") {
+	builder = "cloudfoundry/cnb:bionic"
+	imageName = "docker.io/shinyay/${project.name}:${project.version}"
 }
 
 val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
