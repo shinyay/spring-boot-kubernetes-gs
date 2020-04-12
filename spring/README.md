@@ -52,6 +52,14 @@ $ curl http://localhost:8080/actuator/health/readiness|jq .
 }
 ```
 
+#### Graceful Shutdown
+Web server will no longer permit new requests and will wait for up to the grace period for active requests to complete.
+```yaml
+server:
+  shutdown:
+    grace-period: 30s
+```
+
 ## Features
 
 - feature:1
