@@ -102,6 +102,14 @@ container {
 }
 ```
 
+### Container Run
+```
+$ docker run --rm -d --name spring-boot-kubernetes-gs -p 8080:8080 shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT
+```
+```
+$ curl localhost:8080/actuator/health
+```
+
 ## Features
 
 - feature:1
