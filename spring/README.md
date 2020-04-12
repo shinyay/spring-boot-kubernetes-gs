@@ -73,6 +73,28 @@ tasks.getByName<BootBuildImage>("bootBuildImage") {
 	imageName = "docker.io/${project_id}/${project.name}:${project.version}"
 }
 ```
+
+#### Jib
+
+```
+val username= if (hasProperty("username")) findProperty("username") as String else ""
+val password = if (hasProperty("password")) findProperty("password") as String else ""
+
+jib {
+	from {
+		image = "shinyay/adoptopenjdk11-minimum"
+	}
+	to {
+		image = "registry.hub.docker.com/${project_id}/spring-boot-kubernetes-gs:${version}"
+//        auth.username = $username
+//        auth.password = $password
+	}
+	container {
+		jvmFlags = mutableListOf("-Xms512m", "-Xdebug")
+		creationTime = "USE_CURRENT_TIMESTAMP"
+	}
+```
+
 ## Features
 
 - feature:1
