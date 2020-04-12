@@ -45,12 +45,13 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
+
 tasks.getByName<BootBuildImage>("bootBuildImage") {
 	builder = "cloudfoundry/cnb:bionic"
-	imageName = "docker.io/shinyay/${project.name}:${project.version}"
+	imageName = "docker.io/${project_id}/${project.name}:${project.version}"
 }
 
-val project_id = if (hasProperty("project_id")) findProperty("project_id") as String else ""
 val username= if (hasProperty("username")) findProperty("username") as String else ""
 val password = if (hasProperty("password")) findProperty("password") as String else ""
 
