@@ -95,6 +95,13 @@ jib {
 	}
 ```
 
+##### Creation Time Configuration
+```
+container {
+	creationTime = "USE_CURRENT_TIMESTAMP"
+}
+```
+
 ## Features
 
 - feature:1
