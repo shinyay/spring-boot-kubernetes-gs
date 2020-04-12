@@ -110,6 +110,11 @@ $ docker run --rm -d --name spring-boot-kubernetes-gs -p 8080:8080 shinyay/sprin
 $ curl localhost:8080/actuator/health
 ```
 
+### Container Push
+```
+$ docker push shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT
+```
+
 ## Features
 
 - feature:1
