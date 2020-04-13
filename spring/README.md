@@ -110,9 +110,22 @@ $ docker run --rm -d --name spring-boot-kubernetes-gs -p 8080:8080 shinyay/sprin
 $ curl localhost:8080/actuator/health
 ```
 
-### Container Push
+### Deploy Application to Kubernetes
+
+#### Container Push
 ```
 $ docker push shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT
+```
+
+#### Create Deployment YAML
+```
+$ kubectl create deployment spring-boot-kubernetes-gs --image=shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT --dry-run -o=yaml > deployment.yml
+```
+
+#### Create Service YAML
+```
+$ echo --- > deployment.yml
+$ kubectl create service clusterip spring-boot-kubernetes-gs --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
 ## Features
