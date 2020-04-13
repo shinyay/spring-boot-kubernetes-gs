@@ -22,3 +22,22 @@ spec:
         name: spring-boot-kubernetes-gs
         resources: {}
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-boot-kubernetes-gs
+  name: spring-boot-kubernetes-gs
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: spring-boot-kubernetes-gs
+  type: ClusterIP
+status:
+  loadBalancer: {}
