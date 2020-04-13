@@ -133,7 +133,7 @@ $ kubectl create service clusterip spring-boot-kubernetes-gs --tcp=8080:8080 --d
 $ kubectl apply -f deployment.yml
 ```
 
-####
+#### Confirm cluster status
 ```
 $ kubectl get all -o wide
 
