@@ -151,6 +151,18 @@ NAME                                                   DESIRED   CURRENT   READY
 replicaset.apps/spring-boot-kubernetes-gs-657dd45855   1         1         1       8m    spring-boot-kubernetes-gs   shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT   app=spring-boot-kubernetes-gs,pod-template-hash=657dd45855
 ```
 
+#### Portforward to Service
+```
+$ kubectl port-forward service/spring-boot-kubernetes-gs 8080:8080
+```
+
+#### Access app through SSH tunnel
+```
+$ curl localhost:8080/actuator/health
+
+{"status":"UP","groups":["liveness","readiness"]}⏎
+```
+
 ## Features
 
 - feature:1
