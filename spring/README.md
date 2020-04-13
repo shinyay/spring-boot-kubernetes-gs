@@ -124,7 +124,7 @@ $ kubectl create deployment spring-boot-kubernetes-gs --image=shinyay/spring-boo
 
 #### Create Service YAML
 ```
-$ echo --- > deployment.yml
+$ echo --- >> deployment.yml
 $ kubectl create service clusterip spring-boot-kubernetes-gs --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
