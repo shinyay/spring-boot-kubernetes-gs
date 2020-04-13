@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-boot-kubernetes-gs
+  name: spring-boot-kubernetes-gs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-kubernetes-gs
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-boot-kubernetes-gs
+    spec:
+      containers:
+      - image: shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT
+        name: spring-boot-kubernetes-gs
+        resources: {}
+status: {}
