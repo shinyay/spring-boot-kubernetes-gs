@@ -133,6 +133,24 @@ $ kubectl create service clusterip spring-boot-kubernetes-gs --tcp=8080:8080 --d
 $ kubectl apply -f deployment.yml
 ```
 
+####
+```
+$ kubectl get all -o wide
+
+NAME                                             READY   STATUS    RESTARTS   AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+pod/spring-boot-kubernetes-gs-657dd45855-kctrr   1/1     Running   0          8m    10.244.0.5   kind-control-plane   <none>           <none>
+
+NAME                                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/kubernetes                  ClusterIP   10.96.0.1     <none>        443/TCP    32m   <none>
+service/spring-boot-kubernetes-gs   ClusterIP   10.96.4.143   <none>        8080/TCP   8m    app=spring-boot-kubernetes-gs
+
+NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                  IMAGES                                             SELECTOR
+deployment.apps/spring-boot-kubernetes-gs   1/1     1            1           8m    spring-boot-kubernetes-gs   shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT   app=spring-boot-kubernetes-gs
+
+NAME                                                   DESIRED   CURRENT   READY   AGE   CONTAINERS                  IMAGES                                             SELECTOR
+replicaset.apps/spring-boot-kubernetes-gs-657dd45855   1         1         1       8m    spring-boot-kubernetes-gs   shinyay/spring-boot-kubernetes-gs:0.0.1-SNAPSHOT   app=spring-boot-kubernetes-gs,pod-template-hash=657dd45855
+```
+
 ## Features
 
 - feature:1
