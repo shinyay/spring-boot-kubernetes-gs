@@ -128,6 +128,11 @@ $ echo --- >> deployment.yml
 $ kubectl create service clusterip spring-boot-kubernetes-gs --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
+#### Deploy app to Kubernetes
+```
+$ kubectl apply -f deployment.yml
+```
+
 ## Features
 
 - feature:1
